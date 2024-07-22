@@ -1,7 +1,5 @@
-const quote = document.querySelector(".quote")
-const author = document.querySelector(".author")
-const body = document.querySelector("body")
-const backgroundAuthor = document.querySelector(".background-author")
+const quoteElement = document.querySelector(".quote")
+const authorElement = document.querySelector(".author")
 
 async function quoteOfTheDay() {
     const url =
@@ -24,8 +22,11 @@ async function quoteOfTheDay() {
         const data = await response.json()
         console.log(data)
 
-        quote.textContent = data.text
-        author.textContent = `- ${data.author}`
+        quoteElement.textContent = data.text
+        authorElement.textContent = `- ${data.author}`
+
+        // Update sharing buttons with the fetched quote and author
+        updateSharingButtons(data.text, data.author)
     } catch (error) {
         console.error("Error fetching the quote:", error)
     }
@@ -33,27 +34,19 @@ async function quoteOfTheDay() {
 
 quoteOfTheDay()
 
-async function fetchBackgroundImage() {
-    const url =
-        "https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature"
+function updateSharingButtons(quote, author) {
+    const encodedQuote = encodeURIComponent(`"${quote}" - ${author}`)
+    const pageUrl = encodeURIComponent(window.location.href)
 
-    try {
-        const response = await fetch(url)
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`)
-        }
-        const data = await response.json()
-        if (window.innerWidth > 600) {
-            body.style.backgroundImage = `url(${data.urls.regular})`
-            backgroundAuthor.textContent = `Image Courtesy of: ${data.user.name}`
-        }
-    } catch (error) {
-        // Use a default background image/author
-        if (window.innerWidth > 600) {
-            body.style.backgroundImage = `url(https://images.unsplash.com/photo-1560008511-11c63416e52d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMTEwMjl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjI4NDIxMTc&ixlib=rb-1.2.1&q=80&w=1080)`
-            backgroundAuthor.textContent = `By: Dodi Achmad`
-        }
-    }
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}&quote=${encodedQuote}`
+    const twitterUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${encodedQuote}`
+    const linkedinUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}&title=Inspirational Quote&summary=${encodedQuote}&source=${pageUrl}`
+
+    // console.log("Facebook URL:", facebookUrl)
+    // console.log("Twitter URL:", twitterUrl)
+    // console.log("LinkedIn URL:", linkedinUrl)
+
+    document.querySelector(".share-button.facebook").href = facebookUrl
+    document.querySelector(".share-button.twitter").href = twitterUrl
+    document.querySelector(".share-button.linkedin").href = linkedinUrl
 }
-
-fetchBackgroundImage()

@@ -5,6 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Inspirational Quote Page</title>
         <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
         <link rel="stylesheet" href="css/styles.css" />
     </head>
     <body>
@@ -13,8 +20,23 @@
                 <p class="quote"></p>
                 <cite class="author"></cite>
             </blockquote>
-            <p class="background-author"></p>
+            <p id="background-author" class="background-author"></p>
+            <!-- Custom Sharing Buttons -->
+            <a href="#" class="share-button facebook" target="_blank"
+                ><i class="fa-brands fa-square-facebook"></i
+            ></a>
+            <a href="#" class="share-button twitter" target="_blank"
+                ><i class="fa-brands fa-square-x-twitter"></i
+            ></a>
+            <a href="#" class="share-button linkedin" target="_blank"
+                ><i class="fa-brands fa-linkedin"></i
+            ></a>
         </section>
+        <script src="js/script.js"></script>
+        <script
+            type="text/javascript"
+            src="https://platform-api.sharethis.com/js/sharethis.js#property=669eb4e43ca64b0019342cec&product=inline-share-buttons&source=platform"
+            async="async"
+        ></script>
     </body>
-    <script src="js/script.js"></script>
 </html>
