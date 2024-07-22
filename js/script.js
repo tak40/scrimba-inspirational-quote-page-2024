@@ -62,3 +62,25 @@ function speakQuote() {
 
 // Event listener for the speak button
 speakButton.addEventListener("click", speakQuote)
+
+// Function to copy URL to clipboard
+function copyToClipboard(text) {
+    navigator.clipboard
+        .writeText(text)
+        .then(() => {
+            alert("URL copied to clipboard!")
+        })
+        .catch((err) => {
+            console.error("Could not copy text: ", err)
+        })
+}
+
+// Add event listener to Notion button
+document
+    .querySelector(".notion-button")
+    .addEventListener("click", function (event) {
+        event.preventDefault()
+        const url =
+            "https://tak40.github.io/scrimba-inspirational-quote-page-2024/quote-widget.html"
+        copyToClipboard(url)
+    })
