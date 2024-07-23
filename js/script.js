@@ -24,7 +24,9 @@ async function quoteOfTheDay() {
         console.log(data)
 
         quoteElement.textContent = data.text
-        authorElement.textContent = `- ${data.author}`
+        authorElement.textContent = data.author
+            ? `- ${data.author}`
+            : `- Unknown`
 
         // Update sharing buttons with the fetched quote and author
         updateSharingButtons(data.text, data.author)
@@ -36,7 +38,8 @@ async function quoteOfTheDay() {
 quoteOfTheDay()
 
 function updateSharingButtons(quote, author) {
-    const encodedQuote = encodeURIComponent(`"${quote}" - ${author}`)
+    const authorText = author ? ` - ${author}` : "Unknown"
+    const encodedQuote = encodeURIComponent(`"${quote}" - ${authorText}`)
     const pageUrl = encodeURIComponent(window.location.href)
 
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}&quote=${encodedQuote}`
