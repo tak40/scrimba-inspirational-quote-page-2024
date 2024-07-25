@@ -1,0 +1,39 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: "Roboto", sans-serif;
+    background-image: none !important;
+    background-color: #f8ead8;
+}
+
+.quote-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+    padding: 2em;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quote {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.author {
+    font-size: 1.2em;
+    font-style: italic;
+}
