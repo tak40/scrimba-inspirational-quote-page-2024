@@ -142,7 +142,9 @@ main {
 
 /* Show the tooltip text on hover */
 [data-tooltip]:hover::before,
-[data-tooltip]:hover::after {
+[data-tooltip]:hover::after,
+[data-tooltip].show-tooltip::before,
+[data-tooltip].show-tooltip::after {
     opacity: 1;
 }
 

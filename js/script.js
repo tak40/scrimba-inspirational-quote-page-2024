@@ -3,8 +3,8 @@ const authorElement = document.querySelector(".author")
 const speakButton = document.getElementById("speak-btn")
 
 async function quoteOfTheDay() {
-    const url = ""
-    // "https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote?token=ipworld.info"
+    const url =
+        "https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote?token=ipworld.info"
     const options = {
         method: "GET",
         headers: {
@@ -38,8 +38,8 @@ async function quoteOfTheDay() {
 quoteOfTheDay()
 
 async function fetchBackgroundImage() {
-    const url = ""
-    // "https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature"
+    const url =
+        "https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature"
 
     try {
         const response = await fetch(url)
@@ -64,7 +64,6 @@ async function fetchBackgroundImage() {
     }
 }
 
-// Fetch a new background image when the page loads
 fetchBackgroundImage()
 
 function updateSharingButtons(quote, author) {
@@ -76,9 +75,9 @@ function updateSharingButtons(quote, author) {
     const twitterUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${encodedQuote}`
     const linkedinUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}&title=Inspirational Quote&summary=${encodedQuote}&source=${pageUrl}`
 
-    // console.log("Facebook URL:", facebookUrl)
-    // console.log("Twitter URL:", twitterUrl)
-    // console.log("LinkedIn URL:", linkedinUrl)
+    console.log("Facebook URL:", facebookUrl)
+    console.log("Twitter URL:", twitterUrl)
+    console.log("LinkedIn URL:", linkedinUrl)
 
     document.querySelector(".share-button.facebook").href = facebookUrl
     document.querySelector(".share-button.twitter").href = twitterUrl
@@ -101,11 +100,23 @@ function copyToClipboard(text) {
     navigator.clipboard
         .writeText(text)
         .then(() => {
-            alert("URL copied to clipboard!")
+            showTooltip("Copied!")
         })
         .catch((err) => {
             console.error("Could not copy text: ", err)
         })
+}
+
+// Function to show tooltip
+function showTooltip(message) {
+    const notionButton = document.querySelector(".notion-button")
+    notionButton.setAttribute("data-tooltip", message)
+    notionButton.classList.add("show-tooltip")
+
+    setTimeout(() => {
+        notionButton.classList.remove("show-tooltip")
+        notionButton.setAttribute("data-tooltip", "Embed in Notion")
+    }, 1000)
 }
 
 // Add event listener to Notion button

@@ -13,7 +13,7 @@ body {
     min-height: 100vh;
     font-family: "Roboto", sans-serif;
     background-image: none !important;
-    background-color: #f8ead8;
+    background-color: whitesmoke;
 }
 
 .quote-box {
@@ -22,7 +22,8 @@ body {
     align-items: center;
     gap: 1.5em;
     padding: 2em;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(248, 234, 216, 0.55);
+    color: #070707;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
