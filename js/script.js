@@ -1,10 +1,36 @@
+// GLOBAL VARIABLES
+
 const quoteElement = document.querySelector(".quote")
 const authorElement = document.querySelector(".author")
-const speakButton = document.getElementById("speak-btn")
+const speakButton = document.querySelector(".speak-btn")
+const notionButton = document.querySelector(".notion-button")
 
-async function quoteOfTheDay() {
+// CALLING FUNCTIONS
+
+// Call the function to fetch the quote of the day
+quoteOfTheDay()
+// Call the function to fetch a random background image
+fetchBackgroundImage()
+
+// EVENT LISTENERS
+
+// Add event listener to the speak button
+speakButton.addEventListener("click", speakQuote)
+
+// Add event listener to Notion button to copy URL to clipboard
+notionButton.addEventListener("click", function (event) {
+    event.preventDefault()
     const url =
-        "https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote?token=ipworld.info"
+        "https://tak40.github.io/scrimba-inspirational-quote-page-2024/quote-widget.html"
+    copyToClipboard(url)
+})
+
+// FUNCTIONS
+
+// Function to fetch the quote of the day
+async function quoteOfTheDay() {
+    const url = ""
+    // "https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote?token=ipworld.info"
     const options = {
         method: "GET",
         headers: {
@@ -35,11 +61,10 @@ async function quoteOfTheDay() {
     }
 }
 
-quoteOfTheDay()
-
+// Function to fetch a random background image
 async function fetchBackgroundImage() {
-    const url =
-        "https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature"
+    const url = ""
+    // "https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature"
 
     try {
         const response = await fetch(url)
@@ -64,8 +89,7 @@ async function fetchBackgroundImage() {
     }
 }
 
-fetchBackgroundImage()
-
+// Function to update the sharing buttons with the quote and author
 function updateSharingButtons(quote, author) {
     const authorText = author ? ` - ${author}` : "Unknown"
     const encodedQuote = encodeURIComponent(`"${quote}" - ${authorText}`)
@@ -74,10 +98,6 @@ function updateSharingButtons(quote, author) {
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}&quote=${encodedQuote}`
     const twitterUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${encodedQuote}`
     const linkedinUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}&title=Inspirational Quote&summary=${encodedQuote}&source=${pageUrl}`
-
-    console.log("Facebook URL:", facebookUrl)
-    console.log("Twitter URL:", twitterUrl)
-    console.log("LinkedIn URL:", linkedinUrl)
 
     document.querySelector(".share-button.facebook").href = facebookUrl
     document.querySelector(".share-button.twitter").href = twitterUrl
@@ -91,9 +111,6 @@ function speakQuote() {
     const utterance = new SpeechSynthesisUtterance(`${quote} ${author}`)
     window.speechSynthesis.speak(utterance)
 }
-
-// Event listener for the speak button
-speakButton.addEventListener("click", speakQuote)
 
 // Function to copy URL to clipboard
 function copyToClipboard(text) {
@@ -109,7 +126,6 @@ function copyToClipboard(text) {
 
 // Function to show tooltip
 function showTooltip(message) {
-    const notionButton = document.querySelector(".notion-button")
     notionButton.setAttribute("data-tooltip", message)
     notionButton.classList.add("show-tooltip")
 
@@ -118,13 +134,3 @@ function showTooltip(message) {
         notionButton.setAttribute("data-tooltip", "Embed in Notion")
     }, 1000)
 }
-
-// Add event listener to Notion button
-document
-    .querySelector(".notion-button")
-    .addEventListener("click", function (event) {
-        event.preventDefault()
-        const url =
-            "https://tak40.github.io/scrimba-inspirational-quote-page-2024/quote-widget.html"
-        copyToClipboard(url)
-    })

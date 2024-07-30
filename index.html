@@ -17,54 +17,72 @@
     <body>
         <main>
             <section class="quote-container">
+                <h1 class="visually-hidden">Inspirational Quote</h1>
                 <blockquote class="quote-box">
-                    <p class="quote">Amazing Quote Here MFers!</p>
-                    <cite class="author">- MF</cite>
+                    <p class="quote">
+                        The first step is to establish that something is
+                        possible; then probability will occur.
+                    </p>
+                    <cite class="author">- Elon Musk</cite>
                 </blockquote>
                 <button
-                    id="speak-btn"
                     class="speak-btn"
+                    aria-label="Play quote"
                     data-tooltip="Play quote"
                 >
                     🔊
                 </button>
 
                 <!-- Custom Sharing Buttons -->
-                <div class="share-buttons">
-                    <a
-                        href="#"
-                        class="share-button facebook"
-                        target="_blank"
-                        data-tooltip="Share on Facebook"
-                        ><i class="fa-brands fa-square-facebook"></i
-                    ></a>
-                    <a
-                        href="#"
-                        class="share-button twitter"
-                        target="_blank"
-                        data-tooltip="Tweet this quote"
-                        ><i class="fa-brands fa-square-x-twitter"></i
-                    ></a>
-                    <a
-                        href="#"
-                        class="share-button linkedin"
-                        target="_blank"
-                        data-tooltip="Share on LinkedIn"
-                        ><i class="fa-brands fa-linkedin"></i
-                    ></a>
-                    <a
-                        href="#"
-                        class="share-button notion-button"
-                        data-url="https://tak40.github.io/scrimba-inspirational-quote-page-2024/quote-widget.html"
-                        data-tooltip="Embed in Notion"
-                    >
-                        <img
-                            src="assets/notion.svg"
-                            alt="Notion"
-                            class="notion-icon"
-                        />
-                    </a>
-                </div>
+                <nav aria-label="Share quote">
+                    <ul class="share-buttons">
+                        <li>
+                            <a
+                                href="#"
+                                class="share-button facebook"
+                                target="_blank"
+                                data-tooltip="Share on Facebook"
+                                aria-label="Share on Facebook"
+                                ><i class="fa-brands fa-square-facebook"></i
+                            ></a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                class="share-button twitter"
+                                target="_blank"
+                                data-tooltip="Tweet this quote"
+                                aria-label="Tweet this quote"
+                                ><i class="fa-brands fa-square-x-twitter"></i
+                            ></a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                class="share-button linkedin"
+                                target="_blank"
+                                data-tooltip="Share on LinkedIn"
+                                aria-label="Share on LinkedIn"
+                                ><i class="fa-brands fa-linkedin"></i
+                            ></a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                class="share-button notion-button"
+                                data-url="https://tak40.github.io/scrimba-inspirational-quote-page-2024/quote-widget.html"
+                                data-tooltip="Embed in Notion"
+                                aria-label="Embed in Notion"
+                            >
+                                <img
+                                    src="assets/notion.svg"
+                                    alt="Notion"
+                                    class="notion-icon"
+                                />
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </section>
             <p id="background-author" class="background-author"></p>
         </main>
