@@ -29,13 +29,13 @@ notionButton.addEventListener("click", function (event) {
 
 // Function to fetch the quote of the day
 async function quoteOfTheDay() {
-    const url = ""
-    // "https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote?token=ipworld.info"
+    const url =
+        "https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote?token=ipworld.info"
     const options = {
         method: "GET",
         headers: {
             "X-RapidAPI-Key":
-                "94660ae66fmshacd6a2a7db96c71p1102e4jsn69f7f580edfd",
+                "c80283e6femsha290d5946fdbf5dp191a90jsn2cfd4827e30a",
             "X-RapidAPI-Host":
                 "quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com",
         },
